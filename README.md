@@ -7,6 +7,7 @@ The idea is to create an frontend application using React.js where the user can 
 It's a personal project motivated to practice basics conceptions like:
 
 - HTML
+- Node.js environment
 - Acessibility
 - CSS in JS
 - styled-components

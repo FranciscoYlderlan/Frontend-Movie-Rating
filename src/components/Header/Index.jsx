@@ -8,13 +8,13 @@ export function Header() {
     return (
         <Container>
             <h2>Rocketseat</h2>
-            <Input placehoder="Pesquisar pelo título" icon={BiSearchAlt}></Input>
+            <Input placeholder="Pesquisar pelo título" icon={BiSearchAlt}/>
             <div>
-                <div class="name">
+                <div>
                     <span></span>
-                    <TextLink name={"Sair"}></TextLink>
+                    <a href="#" target="_blank">Sair</a>
                 </div>
-                <img src="" alt="" />
+                <img src="" alt="Foto do usuário" />
             </div>
         </Container>
     );

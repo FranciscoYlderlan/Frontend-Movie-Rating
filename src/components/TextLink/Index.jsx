@@ -1,9 +1,9 @@
 import { Container } from "./Styles.js";
 
-export function TextLink ({name, ...rest}) {
+export function TextLink ({title, ...rest}) {
     return (
         <Container type="button" {...rest}>
-            {name}
+            {title}
         </Container>
     );
 }

@@ -8,8 +8,17 @@ export const Container = styled.div`
     padding: 20px;
     gap: 5px;
     border-radius: 10px;
-    border: 1px red solid;
+
+    background-color: ${({theme}) => theme.COLORS.BACKGROUND_900};
+
+    color: ${({theme}) => theme.COLORS.GRAY_100};
+    
     > input {
+        background-color: ${({theme}) => theme.COLORS.BACKGROUND_900};
         border: none;
+        width: 100%;
     } 
+    > svg {
+        fill: ${({theme}) => theme.COLORS.GRAY_100};
+    }
 `;

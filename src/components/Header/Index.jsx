@@ -11,10 +11,10 @@ export function Header() {
             <Input placeholder="Pesquisar pelo título" icon={BiSearchAlt}/>
             <div>
                 <div>
-                    <span></span>
+                    <span>Francisco Ylderlan</span>
                     <a href="#" target="_blank">Sair</a>
                 </div>
-                <img src="" alt="Foto do usuário" />
+                <img src="https://github.com/FranciscoYlderlan.png" alt="Foto do usuário" />
             </div>
         </Container>
     );

@@ -4,7 +4,7 @@ import { Header } from "../../components/Header";
 export function Preview () {
     return (
         <Container>
-            <Header></Header>
+            <Header/>
         </Container>
     );
 }

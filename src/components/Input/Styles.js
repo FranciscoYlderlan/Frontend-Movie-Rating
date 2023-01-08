@@ -1,6 +1,15 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    grid-area: header;
-    border-bottom: 1px;
+    display: flex;
+    width: 100%;
+    
+    align-items: center;
+    padding: 20px;
+    gap: 5px;
+    border-radius: 10px;
+    border: 1px red solid;
+    > input {
+        border: none;
+    } 
 `;

@@ -5,6 +5,7 @@ export const Container = styled.button`
     gap: 8px;
     background-color: transparent;
     border: none;
-    color: ${({theme}) => theme.COLOR.PINK};
+    align-items: center;
+    color: ${({theme}) => theme.COLORS.PINK};
 
 `;

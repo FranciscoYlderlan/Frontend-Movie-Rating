@@ -2,14 +2,16 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     display: grid;
-    
+    grid-area: content;
     grid-template-rows: fit-content auto;
     grid-template-areas: "header"
                         "content";
     > main {
         grid-area: content;
-        padding: 0 123px;
-        overflow-y: auto;
+        margin: 0 123px;
+        max-height: 70vh;
+        overflow-y: scroll;
+
         .title {
             display: flex;
             gap: 20px;

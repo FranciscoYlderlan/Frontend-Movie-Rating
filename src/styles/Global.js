@@ -8,7 +8,20 @@ export default createGlobalStyle`
     }
     
     body {
+        font-family: 'Roboto Slab', serif;
+        -webkit-font-smoothing: antialiased;
         background: ${({theme}) => theme.COLORS.BACKGROUND_700};
+        color:${({theme}) => theme.COLORS.WHITE};
+    }
+    li {
+        list-style: none;
+    }
+    span, li {
+        font-family: 'Roboto', sans-serif;
+    }
+    input {
+        font-style: normal;
+        font-weight: 400;
     }
     
     a {
@@ -16,10 +29,10 @@ export default createGlobalStyle`
     }
     button, a {
         cursor: pointer;
-        transition: filter .3s;
+        transition: filter .2s;
     }
 
     button:hover, a:hover {
-        filter: brightness(.9);
+        filter: brightness(.7);
     }
 `;

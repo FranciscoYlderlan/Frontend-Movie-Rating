@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     display: grid;
-    grid-area: content;
+    
     grid-template-rows: fit-content auto;
     grid-template-areas: "header"
                         "content";

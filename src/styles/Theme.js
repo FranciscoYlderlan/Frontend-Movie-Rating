@@ -8,7 +8,8 @@ export default {
       WHITE: "#F4EDE8",
       WHITE_100: "#E5E5E5",
       PINK: "#FF859B",
-  
+      DARK_GRAY: "#312E38",
+
       GRAY_100: "#948F99",
       GRAY_300: "#F4EDE8",
   

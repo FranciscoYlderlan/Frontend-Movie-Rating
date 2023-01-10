@@ -15,7 +15,7 @@ It's a personal project motivated to practice basics conceptions like:
 - Vite
 - Javascript
 - .JSX
-- Started a completed frontend project in React.js
+- Start a complete frontend project in React.js
 
 
 ## 🚀 About me

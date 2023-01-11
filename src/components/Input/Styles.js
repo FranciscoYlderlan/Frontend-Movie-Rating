@@ -4,9 +4,9 @@ export const Container = styled.div`
     display: flex;
     width: 100%;
     
-    align-items: center;
+    align-items: flex-end;
     padding: 20px;
-    gap: 5px;
+    gap: 16px;
     border-radius: 10px;
 
     background-color: ${({theme}) => theme.COLORS.BACKGROUND_1000};

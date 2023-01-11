@@ -5,7 +5,7 @@ export const Container = styled.button`
     background-color: ${({theme}) => theme.COLORS.PINK};
     border: none;
     border-radius: 8px;
-    padding: 16px auto;
+    padding: 16px 0;
     color: ${({theme}) => theme.COLORS.DARK_GRAY};
 
     font-style: normal;

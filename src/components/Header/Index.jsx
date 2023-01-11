@@ -1,5 +1,4 @@
 import { BiSearchAlt} from "react-icons/bi";
-import { TextLink } from "../TextLink";
 import { Input } from "../Input";
 import { Container } from "./Styles.js";
  

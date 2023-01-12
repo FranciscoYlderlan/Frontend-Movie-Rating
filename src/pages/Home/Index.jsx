@@ -1,5 +1,5 @@
 import { Frame } from "../../components/Frame";
-import {Header} from "../../components/Header";
+import { Header } from "../../components/Header";
 import { Button } from "../../components/Button";
 import { AiOutlinePlus } from "react-icons/ai";
 import { Container, Title } from "./Styles";

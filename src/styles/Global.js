@@ -17,7 +17,7 @@ export default createGlobalStyle`
     li {
         list-style: none;
     }
-    span, li {
+    span, li, p {
         font-family: 'Roboto', sans-serif;
     }
     input {

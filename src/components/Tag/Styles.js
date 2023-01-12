@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     display: flex;
-    background-color: ${({theme}) => theme.COLORS.BACKGROUND_900};
+    background-color: ${({theme}) => theme.COLORS.DARK_GRAY};
     border: none;
     border-radius: 8px;
     padding: 8px 16px;

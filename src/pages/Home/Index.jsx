@@ -3,19 +3,22 @@ import { Header } from "../../components/Header";
 import { Button } from "../../components/Button";
 import { AiOutlinePlus } from "react-icons/ai";
 import { Container, Title } from "./Styles";
+import { Link } from "react-router-dom";
 export function Home() {
     return (
         <Container>
             <Header/>
             <Title>
                 <h2>Meus Filmes</h2>
-                <Button title={"Adicionar filme"} icon={AiOutlinePlus}/>
+                
+                <Button to="/new" title={"Adicionar filme"} icon={AiOutlinePlus}/>
+                
             </Title>
             <main>
-                <Frame/>
-                <Frame/>
-                <Frame/>
-                <Frame/>
+                <Frame to="/preview/5"/>
+                <Frame to="/preview/5"/>
+                <Frame to="/preview/5"/>
+                <Frame to="/preview/5"/>
             </main>
         </Container>
     );

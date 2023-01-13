@@ -1,20 +1,20 @@
-import { BiSearchAlt} from "react-icons/bi";
+import { BiSearchAlt } from "react-icons/bi";
 import { Input } from "../Input";
-import { Container } from "./Styles.js";
+import { Container, Logo, Account } from "./Styles.js";
  
 
 export function Header() {
     return (
         <Container>
-            <h2>Rocketseat</h2>
+            <Logo to="/">Rocketseat</Logo>
             <Input placeholder="Pesquisar pelo título" icon={BiSearchAlt}/>
-            <div>
+            <Account to="/profile">
                 <div>
                     <span>Francisco Ylderlan</span>
                     <a href="#" target="_blank">Sair</a>
                 </div>
                 <img src="https://github.com/FranciscoYlderlan.png" alt="Foto do usuário" />
-            </div>
+            </Account>
         </Container>
     );
 }

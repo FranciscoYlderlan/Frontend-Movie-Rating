@@ -34,6 +34,7 @@ export const Container = styled.div`
             margin: 24px 0;
         }
         .link{
+            width: fit-content;
             margin: 42px auto;
         }
     }

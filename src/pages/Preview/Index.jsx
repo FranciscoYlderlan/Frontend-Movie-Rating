@@ -14,7 +14,7 @@ export function Preview () {
         <Container>
             <Header/>
             <main>
-                <TextLink title="Voltar" icon={BiArrowBack}/>
+                <TextLink to="/" title="Voltar" icon={BiArrowBack}/>
                 <header>
                     <div className="title">
                         <h2>Interestelar</h2>

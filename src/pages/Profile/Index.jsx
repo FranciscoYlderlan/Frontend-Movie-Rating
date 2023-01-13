@@ -26,7 +26,7 @@ export function Profile() {
                 <Input  placeholder="E-mail" type="email" required icon={AiOutlineMail}/>
                 <Input  placeholder="Senha atual" type="password"  required icon={BiLockAlt}/>
                 <Input  placeholder="Nova senha" type="password"  required icon={BiLockAlt}/>
-                <Button title="Salvar" type="button"/>
+                <Button to="/" title="Salvar" type="button"/>
             </Form>
         </Container>
     );

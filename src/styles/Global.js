@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-
+import { Link } from "react-router-dom";
 export default createGlobalStyle`
     * {
         padding: 0;
@@ -26,15 +26,15 @@ export default createGlobalStyle`
         color:${({theme}) => theme.COLORS.WHITE};
     }
     
-    a {
+     a {
         text-decoration: none;
     }
-    button, a {
+     a {
         cursor: pointer;
         transition: filter .2s;
     }
 
-    button:hover, a:hover {
+    a:hover {
         filter: brightness(.7);
     }
 

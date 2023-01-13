@@ -20,7 +20,7 @@ export function SignUp() {
                     <Input  placeholder="Senha" type="password"  required icon={BiLockAlt}/>
                 </form>
                 <Button title="Cadastrar" type="button"/>
-                <TextLink className="link" title="Voltar para o login" icon={BiArrowBack}/>
+                <TextLink to="/" className="link" title="Voltar para o login" icon={BiArrowBack}/>
             </main>
             <Image/>
         </Container>

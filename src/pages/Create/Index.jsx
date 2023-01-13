@@ -12,7 +12,7 @@ export function Create() {
         <Container>
             <Header/>
             <Title>
-                <TextLink title="Voltar" icon={BiArrowBack}/>
+                <TextLink to="/" title="Voltar" icon={BiArrowBack}/>
                 <h2>Novo filme</h2>
             </Title>
             <main>
@@ -29,7 +29,7 @@ export function Create() {
                     </MarkArea>
                     <div className="col-2">
                         <Button title="Excluir filme"/>
-                        <Button title="Salvar alterações"/>
+                        <Button to="/" title="Salvar alterações"/>
                     </div>
                 </form>
             </main>

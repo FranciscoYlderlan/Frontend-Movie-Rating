@@ -1,13 +1,15 @@
 import styled from "styled-components";
-
-export const Container = styled.div`
+import { Link } from "react-router-dom";
+export const Container = styled(Link)`
     display: grid;
     background-color: ${({theme})=> theme.COLORS.PINK_ALFA};
     border: none;
     border-radius: 16px;
     padding: 32px;
     gap: 8px;
+    filter: brightness(1) !important;
     > h3 {
+        color: ${({theme})=> theme.COLORS.WHITE};
         font-style: normal;
         font-weight: 700;
         font-size: 24px;

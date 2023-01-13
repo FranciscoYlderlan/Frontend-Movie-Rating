@@ -19,9 +19,8 @@ export function SignIn() {
                     <Input  placeholder="Senha" type="password"  required icon={BiLockAlt}/>
                 </form>
                 <Button title="Entrar" type="button"/>
-                <TextLink className="link" title="Criar conta" />
-            </main>
-            
+                <TextLink to="/register" className="link" title="Criar conta" />
+            </main>       
             <Image/>
         </Container>
     );

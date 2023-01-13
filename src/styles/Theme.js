@@ -6,6 +6,7 @@ export default {
       BACKGROUND_700: "#1C1B1E",
   
       WHITE: "#F4EDE8",
+      BLACK: "#0D0C0F",
       WHITE_100: "#E5E5E5",
       PINK: "#FF859B",
       PINK_ALFA:"#ff859b0d", // SIMILAR AO BACKGROUD_900

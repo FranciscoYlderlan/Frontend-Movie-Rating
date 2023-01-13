@@ -23,6 +23,7 @@ export default createGlobalStyle`
     input {
         font-style: normal;
         font-weight: 400;
+        color:${({theme}) => theme.COLORS.WHITE};
     }
     
     a {

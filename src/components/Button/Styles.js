@@ -19,4 +19,8 @@ export const Container = styled.button`
     font-size: 16px;
     line-height: 21px;
 
+    &:disabled {
+        cursor:default;
+        filter: brightness(.5);
+    }
 `;

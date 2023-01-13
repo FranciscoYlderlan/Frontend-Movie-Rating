@@ -50,7 +50,9 @@ export const Form = styled.form`
     gap: 8px;
     margin: 168px auto 0;
     justify-self: center;
-
+    div:nth-child(3) {
+        margin-top: 16px;
+    }
     > Button{
         margin-top: 16px;
     }

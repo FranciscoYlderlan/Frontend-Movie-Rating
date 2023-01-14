@@ -12,7 +12,7 @@ export function Profile() {
     return(
         <Container>
             <Head>
-                <TextLink title="Voltar" icon={BiArrowBack}/>
+                <TextLink to="/" title="Voltar" icon={BiArrowBack}/>
             </Head>
             <Avatar>   
                 <img src="https://github.com/FranciscoYlderlan.png" alt="Foto do usuário" />

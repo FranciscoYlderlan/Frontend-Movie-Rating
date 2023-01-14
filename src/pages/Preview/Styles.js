@@ -27,6 +27,7 @@ export const Container = styled.div`
         .status {
             display: flex;
             gap: 12px;
+            color: ${({theme})=> theme.COLORS.WHITE};
             img{
                 height: 16px;
                 border-radius: 50%;

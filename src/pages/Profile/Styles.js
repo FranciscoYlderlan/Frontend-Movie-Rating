@@ -2,14 +2,13 @@ import styled  from 'styled-components'
 
 export const Container = styled.div`
     display: grid;
-
 `;
 
 
 export const Head = styled.div`
     display: flex;
     height: fit-content;
-    padding: 62px 123px;
+    padding: 48px 123px;
     background-color: ${({theme}) => theme.COLORS.BACKGROUND_900};
  
 `;
@@ -48,12 +47,12 @@ export const Form = styled.form`
     width: 340px;
     display: grid;
     gap: 8px;
-    margin: 168px auto 0;
+    margin: 144px auto 0;
     justify-self: center;
     div:nth-child(3) {
         margin-top: 16px;
     }
-    > Button{
+    > a{
         margin-top: 16px;
     }
 `;

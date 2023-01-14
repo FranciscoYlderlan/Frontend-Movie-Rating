@@ -13,7 +13,7 @@ export function SignUp() {
             <main>
                 <h1>RocketMovies</h1>
                 <p>Aplicação para acompanhar tudo que assistir.</p>
-                <h2>Faça seu login</h2>
+                <h2>Crie sua conta</h2>
                 <form action="">
                     <Input  placeholder="Nome" type="text" required icon={RxPerson}/>
                     <Input  placeholder="E-mail" type="email" required icon={AiOutlineMail}/>

@@ -5,7 +5,6 @@ export const Container = styled.textarea`
     width: 100%;
     outline: none;
     background-color: ${({theme}) => theme.COLORS.BACKGROUND_1000};
-    color: ${({theme}) => theme.COLORS.GRAY_100};
     font-style: normal;
     font-weight: 400;
     font-size: 16px;

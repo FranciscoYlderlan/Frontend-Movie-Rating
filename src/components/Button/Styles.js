@@ -14,7 +14,7 @@ export const Container = styled(Link)`
     color: ${({theme}) => theme.COLORS.DARK_GRAY};
 
     
-    font-style: normal;
+    font-style: normal;    
     font-weight: 500;
     font-size: 16px;
     line-height: 21px;

@@ -25,8 +25,9 @@ export const Container = styled.div`
         
         font-style: normal;
         font-weight: 400;
-        font-size: 14px;
-        line-height: 18px;
+        font-size: 16px;
+        line-height: 21px;
+        
         outline: none;
     } 
     > svg {

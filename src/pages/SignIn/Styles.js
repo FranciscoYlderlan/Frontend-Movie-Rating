@@ -14,6 +14,7 @@ export const Container = styled.div`
             color: ${({theme}) => theme.COLORS.PINK};
         }
         p {
+            color: ${({theme})=> theme.COLORS.GRAY};
             margin-bottom: 24px;
             font-style: normal;
             font-weight: 400;

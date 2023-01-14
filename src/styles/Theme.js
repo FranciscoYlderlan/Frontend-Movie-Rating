@@ -12,6 +12,7 @@ export default {
       PINK_ALFA:"#ff859b0d", // SIMILAR AO BACKGROUD_900
       DARK_GRAY: "#312E38",
 
+      GRAY: "#CAC4CF",
       GRAY_100: "#948F99",
       GRAY_200: "#999591",
       GRAY_300: "#F4EDE8",

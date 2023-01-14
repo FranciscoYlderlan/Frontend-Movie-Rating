@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import { Link } from "react-router-dom";
+
+
 export default createGlobalStyle`
     * {
         padding: 0;
@@ -20,7 +21,8 @@ export default createGlobalStyle`
     span, li, p {
         font-family: 'Roboto', sans-serif;
     }
-    input {
+    input, textarea {
+        font-family: 'Roboto Slab', serif;
         font-style: normal;
         font-weight: 400;
         color:${({theme}) => theme.COLORS.WHITE};

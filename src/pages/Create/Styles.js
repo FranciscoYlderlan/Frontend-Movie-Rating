@@ -7,12 +7,19 @@ export const Container = styled.div`
                          "content";
     > main {
         grid-area: content;
-        max-height: 60vh;
+        max-height: 55vh;
         overflow-y: scroll;
         margin: 0px 123px;
         > form {
             display: grid;
             gap: 40px;
+            h3 {
+                font-style: normal;
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 26px;
+                color: ${({theme}) => theme.COLORS.GRAY};
+            }
             .col-2 {
                 display: flex;
                 gap: 40px;

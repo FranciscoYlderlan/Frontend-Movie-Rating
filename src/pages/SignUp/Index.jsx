@@ -9,13 +9,17 @@ import { Container, Image } from "./Styles.js";
 import {BiLockAlt, BiArrowBack} from "react-icons/bi";
 import {AiOutlineMail} from "react-icons/ai";
 import { RxPerson } from "react-icons/rx";
-
+import { useAuth } from "../../hooks/auth";
 
 export function SignUp() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    
+    const data = useAuth();
 
+    console.log(data);
+    
     function handleSignUp() {
         if (!name || !email || !password) {
             alert("Preencha todos os campos");

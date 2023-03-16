@@ -9,16 +9,12 @@ import { Container, Image } from "./Styles.js";
 import {BiLockAlt, BiArrowBack} from "react-icons/bi";
 import {AiOutlineMail} from "react-icons/ai";
 import { RxPerson } from "react-icons/rx";
-import { useAuth } from "../../hooks/auth";
+
 
 export function SignUp() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    
-    const data = useAuth();
-
-    console.log(data);
     
     function handleSignUp() {
         if (!name || !email || !password) {
@@ -29,7 +25,7 @@ export function SignUp() {
         .then(() => alert("Usuário cadastrado com sucesso!"))
         .catch(error => {
             if(error.response){
-                alert(error.response.message);
+                alert(error.response.data.message);
             } else {
                 alert("Ocorreu um erro ao cadastrar usuário");
             }

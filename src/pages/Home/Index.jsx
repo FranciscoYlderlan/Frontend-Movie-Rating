@@ -3,7 +3,7 @@ import { Header } from "../../components/Header";
 import { Button } from "../../components/Button";
 import { AiOutlinePlus } from "react-icons/ai";
 import { Container, Title } from "./Styles";
-import { Link } from "react-router-dom";
+
 export function Home() {
     return (
         <Container>

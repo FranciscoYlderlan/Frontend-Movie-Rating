@@ -3,11 +3,25 @@ import {TextLink} from "../../components/TextLink";
 import {Button} from "../../components/Button";
 import {BiLockAlt} from "react-icons/bi";
 import {AiOutlineMail} from "react-icons/ai";
-
 import { Container, Image } from "./Styles.js";
+
+import { useState } from "react";
+import { useAuth } from "../../hooks/auth";
 
 
 export function SignIn() {
+    const { signIn } = useAuth();
+
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    
+    
+    function handleSignIn() {
+        signIn({ email, password });
+    }
+
     return (
         <Container>
             <main>
@@ -15,10 +29,22 @@ export function SignIn() {
                 <p>Aplicação para acompanhar tudo que assistir.</p>
                 <h2>Faça seu login</h2>
                 <form action="">
-                    <Input  placeholder="E-mail" type="email" required icon={AiOutlineMail}/>
-                    <Input  placeholder="Senha" type="password"  required icon={BiLockAlt}/>
+                    <Input  
+                        placeholder="E-mail" 
+                        type="email" 
+                        icon={AiOutlineMail}
+                        required
+                        onChange = { (e) => setEmail(e.target.value) } 
+                    />
+                    <Input  
+                        placeholder="Senha" 
+                        type="password" 
+                        icon={BiLockAlt}
+                        required
+                        onChange = { (e) => setPassword(e.target.value) }  
+                    />
                 </form>
-                <Button title="Entrar" type="button"/>
+                <Button title="Entrar" onClick = { handleSignIn }/>
                 <TextLink to="/register" className="link" title="Criar conta" />
             </main>       
             <Image/>

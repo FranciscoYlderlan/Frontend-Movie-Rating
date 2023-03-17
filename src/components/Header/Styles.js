@@ -23,7 +23,7 @@ export const Logo = styled(Link)`
 
 `;
 
-export const Account = styled(Link)`
+export const Account = styled.div`
     display: flex;
     gap: 10px;
     align-items: center;
@@ -41,8 +41,8 @@ export const Account = styled(Link)`
             color: ${({theme}) =>  theme.COLORS.GRAY_300};
 
             font-weight: 700;
-            }
-            a {
+        }
+        a {
             color: ${({theme}) =>  theme.COLORS.GRAY_100};
             
             font-weight: 400;

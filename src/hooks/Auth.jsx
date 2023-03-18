@@ -36,6 +36,27 @@ function AuthProvider({children}) {
 
     }
 
+    async function updateProfile({ user }) {
+        try {
+            
+            await api.put('/users', user);
+            
+            localStorage.setItem('@rating-movie:user', JSON.stringify( user ));
+
+            setData({ user, token: data.token });
+
+            alert("Perfil de usuário atualizado com sucesso!")
+              
+        } catch (error) {
+
+             if(error.response) {
+                alert(error.response.data.message);
+            } else {
+                alert('Ocorreu um erro ao tentar atualizar perfil de usuário.')
+            }
+        }
+    }
+
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('@rating-movie:user'));
         const token = localStorage.getItem('@rating-movie:token');
@@ -44,7 +65,7 @@ function AuthProvider({children}) {
     },[])
 
     return (
-        <AuthContext.Provider value={{ signIn, Logout, user: data.user }}>
+        <AuthContext.Provider value={{ signIn, updateProfile, Logout, user: data.user }}>
             {children}
         </AuthContext.Provider>
     );

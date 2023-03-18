@@ -31,7 +31,6 @@ export const Account = styled.div`
         display: grid;
         justify-items: end;
         height: fit-content;
-
         font-style: normal;
         font-size: 14px;
         line-height: 18px;
@@ -39,17 +38,21 @@ export const Account = styled.div`
         > span {
             white-space: pre;
             color: ${({theme}) =>  theme.COLORS.GRAY_300};
-
             font-weight: 700;
         }
         a {
             color: ${({theme}) =>  theme.COLORS.GRAY_100};
-            
             font-weight: 400;
+        }
+        > span:hover {
+            cursor: pointer;
         }
     }
     > img {
             height: 64px;
             border-radius: 50%;
+    }
+    > img:hover {
+        cursor: pointer;
     }
 `;

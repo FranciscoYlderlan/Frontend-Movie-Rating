@@ -8,6 +8,8 @@ import { RxPerson } from "react-icons/rx";
 import { api } from "../../services/Api";
 import { useAuth } from "../../hooks/auth";
 
+import avatarPlaceholder from '../../assets/avatar_placeholder.svg'; 
+
 import { Container, Head, Avatar, Form } from "./Styles";
 import { useEffect, useState } from "react";
 
@@ -21,14 +23,29 @@ export function Profile() {
     const [password, setPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
 
+    const avatarURL =  user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
+    
+    const [avatar, setAvatar] = useState(avatarURL);
+    const [avatarFile, setAvatarFile] = useState(null);
+
+    function handleChangeAvatar(event) {
+        const file = event.target.files[0];
+        setAvatarFile(file);
+
+        const imagePreview = URL.createObjectURL(file);
+        setAvatar(imagePreview);
+        
+    }
+
     function handleUpdateProfile() {
         const userUpdated = Object.assign(user,{
             name,
             email,
             password,
-            newPassword
+            newPassword,
         });
-        updateProfile({ user: userUpdated });
+        
+        updateProfile({ user: userUpdated, avatarFile });
     }
 
     return(
@@ -37,10 +54,17 @@ export function Profile() {
                 <TextLink to="/" title="Voltar" icon={BiArrowBack}/>
             </Head>
             <Avatar>   
-                <img src="https://github.com/FranciscoYlderlan.png" alt="Foto do usuário" />
+                <img 
+                    src={avatar} 
+                    alt="Foto do usuário" 
+                />
                 <label htmlFor="avatar">
                     <FiCamera size={20}/>
-                    <input type="file"id="avatar"/>
+                    <input 
+                        type="file" 
+                        id="avatar"
+                        onChange={e => handleChangeAvatar(e)}    
+                    />
                 </label>
             </Avatar>
             <Form>

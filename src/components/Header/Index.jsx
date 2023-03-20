@@ -3,11 +3,15 @@ import { Input } from "../Input";
 import { Container, Logo, Account } from "./Styles.js";
 import { useAuth } from "../../hooks/auth";
 import { useNavigate } from "react-router-dom";
+import { api } from "../../services/Api";
+import avatarPlaceholder from '../../assets/avatar_placeholder.svg'; 
 
 export function Header() {
     
     const navigate = useNavigate();
-    const { Logout } = useAuth();
+    const { Logout, user } = useAuth();
+    
+    const avatarURL =  user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
     
     function handleLogout() {
         Logout();
@@ -28,7 +32,7 @@ export function Header() {
                 </div>
                 <img 
                     onClick={handleClickProfile} 
-                    src="https://github.com/FranciscoYlderlan.png" 
+                    src= {avatarURL} 
                     alt="Foto do usuário" 
                 />
             </Account>

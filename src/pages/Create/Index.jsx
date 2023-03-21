@@ -7,6 +7,7 @@ import { TextArea } from "../../components/TextArea";
 import { Markup } from "../../components/Markup";
 import { Container, Title, MarkArea } from "./Styles";
 import { useState } from "react";
+import { api } from "../../services/Api";
 
 export function Create() {
     const [title, setTitle] = useState('');
@@ -34,7 +35,29 @@ export function Create() {
         setTags(prevState => prevState.filter(tag => tag != value));
     }
 
+    async function handleSubmitNote() {
+        try {
+            
+            if(newTag) {
+                alert('Tag informada não foi adicionada.');
+                return;
+            }
+            
+            await api.post('notes/',{ title, description, rating, tags});
+            alert('Nota cadastrada com sucesso!');
+            
+        } catch (error) {
+            if(error.response) {
+                alert(error.response.data.message);
+            }else{
+                alert('Ocorreu um erro ao cadastrar nota');
+            }
+        }
+    }
 
+    async function handleDeleteNote() {
+        
+    }
     return (
         <Container>
             <Header/>
@@ -48,17 +71,20 @@ export function Create() {
                         <Input 
                             placeholder="Titulo"
                             onChange={e => setTitle(e.target.value)}
+                            required
                         />
                         <Input
                             type='number' 
                             placeholder="Sua nota (de 0 a 5)"
                             value={rating}
                             onChange={e => handleSetRating(e.target.value)}
+                            required
                         />
                     </div>
                     <TextArea 
                         placeholder="Observações"
                         onChange={e => setDescription(e.target.value)}
+                        required
                     />
                     <h3>Marcadores</h3>
                     <MarkArea>
@@ -83,7 +109,7 @@ export function Create() {
                     </MarkArea>
                     <div className="col-2">
                         <Button title="Excluir filme"/>
-                        <Button to="/" title="Salvar alterações"/>
+                        <Button onClick={handleSubmitNote} title="Salvar alterações"/>
                     </div>
                 </form>
             </main>

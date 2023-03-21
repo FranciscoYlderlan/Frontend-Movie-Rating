@@ -50,10 +50,12 @@ export const Title = styled.div`
 
 export const MarkArea = styled.div`
         display: flex;
-        gap: 8px;
+        gap: 30.5px;
+        padding: 16px;
         background-color: ${({theme}) => theme.COLORS.BLACK};
         border: none;
         border-radius: 16px;
         height: fit-content;
         width: 100%;
+        flex-wrap: wrap;
 `;

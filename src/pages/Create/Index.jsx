@@ -10,9 +10,30 @@ import { useState } from "react";
 
 export function Create() {
     const [title, setTitle] = useState('');
-    const [rating, setRating] = useState('');
+    const [rating, setRating] = useState(null);
     const [description, setDescription] = useState('');
-    const [tag, setTag] = useState([]);
+    const [tags, setTags] = useState([]);
+    const [newTag, setNewTag] = useState("");
+    
+
+    function handleSetRating(value) {
+        if(value >= 5) {
+            setRating(5); 
+        }else if(value < 0) {
+            setRating(0);  
+        }else{
+            setRating(value);
+        }
+    }
+
+    function handleAddTag(){
+        setTags(prevState => [...prevState,newTag]);
+        setNewTag('');
+    }
+    function handleRemoveTag(value) {
+        setTags(prevState => prevState.filter(tag => tag != value));
+    }
+
 
     return (
         <Container>
@@ -28,9 +49,11 @@ export function Create() {
                             placeholder="Titulo"
                             onChange={e => setTitle(e.target.value)}
                         />
-                        <Input 
+                        <Input
+                            type='number' 
                             placeholder="Sua nota (de 0 a 5)"
-                            onChange={e => setRating(e.target.value)}
+                            value={rating}
+                            onChange={e => handleSetRating(e.target.value)}
                         />
                     </div>
                     <TextArea 
@@ -39,8 +62,24 @@ export function Create() {
                     />
                     <h3>Marcadores</h3>
                     <MarkArea>
-                        <Markup value="Ficção Científica"/>
-                        <Markup isNew placeholder="Novo marcador"/>
+                        {
+                            tags && tags.map( (tag, index) => {
+                                return (
+                                    <Markup 
+                                        key={index} 
+                                        value={tag}
+                                        onClick={() => handleRemoveTag(tag)} 
+                                    />
+                                )
+                            })
+                        }
+                        <Markup 
+                            isNew 
+                            placeholder="Novo marcador"
+                            onChange={e => setNewTag(e.target.value)}
+                            value={newTag}
+                            onClick={handleAddTag}
+                        />
                     </MarkArea>
                     <div className="col-2">
                         <Button title="Excluir filme"/>

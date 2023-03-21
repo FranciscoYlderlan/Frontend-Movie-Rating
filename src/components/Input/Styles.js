@@ -30,6 +30,19 @@ export const Container = styled.div`
         
         outline: none;
     } 
+    
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+
     > svg {
         fill: ${({theme}) => theme.COLORS.GRAY_100};
     }

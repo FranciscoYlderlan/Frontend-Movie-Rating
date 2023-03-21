@@ -4,7 +4,7 @@ export const Container = styled.div`
     display: flex;
     gap: 16px;
     align-items: center;
-    margin: 16px;
+    
     padding: 16px;
     
     border-radius: 10px;
@@ -23,6 +23,9 @@ export const Container = styled.div`
             color: ${({theme})=> theme.COLORS.PINK}
         }
     }
+    > button:hover {
+        cursor: pointer;
+    }
     > input {
         color: ${({theme}) => theme.COLORS.WHITE};
         font-weight: 400;
@@ -34,6 +37,8 @@ export const Container = styled.div`
         &::placeholder {
             color:  ${({theme}) => theme.COLORS.GRAY_100};
         }
+
+        outline: none;
     }
 
 `;

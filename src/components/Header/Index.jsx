@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { api } from "../../services/Api";
 import avatarPlaceholder from '../../assets/avatar_placeholder.svg'; 
 
-export function Header() {
+export function Header({...rest}) {
     
     const navigate = useNavigate();
     const { Logout, user } = useAuth();
@@ -24,7 +24,7 @@ export function Header() {
     return (
         <Container>
             <Logo to="/">Rocketseat</Logo>
-            <Input placeholder="Pesquisar pelo título" icon={BiSearchAlt}/>
+            <Input placeholder="Pesquisar pelo título" icon={BiSearchAlt} {...rest}/>
             <Account>
                 <div>
                     <span onClick={handleClickProfile}>Francisco Ylderlan</span>

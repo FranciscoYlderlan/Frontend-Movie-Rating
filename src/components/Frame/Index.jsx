@@ -2,16 +2,22 @@ import { StarRating } from "../StarRating";
 import { List } from "../List";
 import { Tag } from "../Tag";
 import { Container } from "./Styles";
-export function Frame({...rest}){
+export function Frame({note,...rest}){
     return (
         <Container {...rest}>
-            <h3>Interestellar</h3>
-                <StarRating resize={15}/>
-            <p>Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um fantasma que tenta se </p>
+            <h3>{note.title}</h3>
+            <StarRating resize={15}/>
+            <p>{note.description}</p>
             <List className="tags">
-                <li><Tag title="Ficção Científica"/></li>
-                <li><Tag title="Drama"/></li>
-                <li><Tag title="Família"/></li>
+                {
+                    note.tags && note.tags.map((tag, index) => {
+                        return (
+                            <li key={String(index)}>
+                                <Tag title= {tag.name}/>
+                            </li>             
+                        )
+                    })
+                }
             </List>
         </Container>
     );

@@ -11,11 +11,11 @@ import { api } from "../../services/Api";
 
 export function Create() {
     const [title, setTitle] = useState('');
-    const [rating, setRating] = useState(null);
+    const [rating, setRating] = useState(0);
     const [description, setDescription] = useState('');
     const [tags, setTags] = useState([]);
     const [newTag, setNewTag] = useState("");
-    
+    const [noteId, setNoteId] = useState("");
 
     function handleSetRating(value) {
         if(value >= 5) {
@@ -43,7 +43,8 @@ export function Create() {
                 return;
             }
             
-            await api.post('notes/',{ title, description, rating, tags});
+            const response =  await api.post('notes/',{ title, description, rating, tags});
+            setNoteId(response.data.note_id)
             alert('Nota cadastrada com sucesso!');
             
         } catch (error) {
@@ -56,7 +57,28 @@ export function Create() {
     }
 
     async function handleDeleteNote() {
-        
+        try {
+            if(noteId) {
+                if(window.confirm('Tem certeza que deseja excluir nota já cadastrada?')){
+                    await api.delete(`notes/${noteId}`);
+                    setTitle('');
+                    setRating(0);
+                    setDescription('');
+                    setTags([]);
+                    setNoteId('');
+                    alert('Nota excluída com sucesso!');
+                }
+            }else{
+                alert('Nota ainda não foi cadastrada');
+            }
+            
+        } catch (error) {
+            if(error.response) {
+                alert(error.response.data.message);
+            }else{
+                alert('Ocorreu um erro ao deletar nota');
+            }
+        }
     }
     return (
         <Container>
@@ -70,19 +92,20 @@ export function Create() {
                     <div className="col-2">
                         <Input 
                             placeholder="Titulo"
+                            value={title}
                             onChange={e => setTitle(e.target.value)}
                             required
                         />
                         <Input
                             type='number' 
                             placeholder="Sua nota (de 0 a 5)"
-                            value={rating}
                             onChange={e => handleSetRating(e.target.value)}
                             required
                         />
                     </div>
                     <TextArea 
                         placeholder="Observações"
+                        value={description}
                         onChange={e => setDescription(e.target.value)}
                         required
                     />
@@ -92,7 +115,7 @@ export function Create() {
                             tags && tags.map( (tag, index) => {
                                 return (
                                     <Markup 
-                                        key={index} 
+                                        key={String(index)} 
                                         value={tag}
                                         onClick={() => handleRemoveTag(tag)} 
                                     />
@@ -108,7 +131,7 @@ export function Create() {
                         />
                     </MarkArea>
                     <div className="col-2">
-                        <Button title="Excluir filme"/>
+                        <Button onClick={handleDeleteNote} title="Excluir filme"/>
                         <Button onClick={handleSubmitNote} title="Salvar alterações"/>
                     </div>
                 </form>

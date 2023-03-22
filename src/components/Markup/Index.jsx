@@ -1,6 +1,6 @@
 import { Container } from "./Styles";
 import { FiPlus, FiX } from "react-icons/fi";
-export function Markup({isNew, value ,onClick, ...rest}) {
+export function Markup({isNew, value='' ,onClick, ...rest}) {
     
     
     

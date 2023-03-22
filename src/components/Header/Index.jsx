@@ -24,7 +24,11 @@ export function Header({...rest}) {
     return (
         <Container>
             <Logo to="/">Rocketseat</Logo>
-            <Input placeholder="Pesquisar pelo título" icon={BiSearchAlt} {...rest}/>
+            <Input 
+                placeholder="Pesquisar pelo título" 
+                icon={BiSearchAlt} 
+                {...rest}
+            />
             <Account>
                 <div>
                     <span onClick={handleClickProfile}>Francisco Ylderlan</span>

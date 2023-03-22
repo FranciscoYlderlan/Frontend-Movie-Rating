@@ -13,23 +13,33 @@ export function Home() {
     
     
     useEffect(() => {
-        function fetchSearchNotes(){
-            
-        }
-    },[search])
+        async function fetchSearchNotes(){
+            try {
+                const response = await api.get(`notes/?search=${search}`);
+                setNotes(response.data);
 
+            } catch (error) {
+                if(error.response) {
+                    alert(error.response.data.message);
+                }else{
+                    alert('Ocorreu um erro ao pesquisar notas');
+                }
+            }   
+        }
+        fetchSearchNotes();
+    },[search])
 
     useEffect(() => {
         async function fetchShowNotes(){
             try {
-                const response = await api.get('notes/');
+                const response = await api.get('notes/?search');
                 setNotes(response.data);
             
             } catch (error) {
                 if(error.response) {
                     alert(error.response.data.message);
                 }else{
-                    alert('Ocorreu um erro ao exibir notas');
+                    alert('Ocorreu um erro ao pesquisar notas');
                 }
             }
         }
@@ -37,7 +47,7 @@ export function Home() {
     },[]);
     return (
         <Container>
-            <Header onChange={e => handleSearchNotes(e)}/>
+            <Header onChange={e => setSearch(e.target.value)}/>
             <Title>
                 <h2>Meus Filmes</h2>
                 

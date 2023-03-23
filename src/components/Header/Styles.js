@@ -51,6 +51,8 @@ export const Account = styled.div`
     > img {
             height: 64px;
             border-radius: 50%;
+            width: 64px;
+            object-fit: cover;
     }
     > img:hover {
         cursor: pointer;

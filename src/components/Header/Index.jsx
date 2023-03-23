@@ -31,7 +31,7 @@ export function Header({...rest}) {
             />
             <Account>
                 <div>
-                    <span onClick={handleClickProfile}>Francisco Ylderlan</span>
+                    <span onClick={handleClickProfile}>{user.name}</span>
                     <a onClick={handleLogout}>Sair</a>
                 </div>
                 <img 

@@ -31,6 +31,8 @@ export const Container = styled.div`
             img{
                 height: 16px;
                 border-radius: 50%;
+                width: 16px;
+                object-fit: cover;
             }
 
             > span {

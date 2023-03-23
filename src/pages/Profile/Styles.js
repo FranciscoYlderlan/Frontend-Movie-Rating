@@ -22,8 +22,9 @@ export const Avatar = styled.div`
     margin: -84px auto;
     > img {
         height: 186px;
+        width: 186px;
         border-radius: 50%;
-        
+        object-fit: cover;
     };
     > label {
         position: absolute;

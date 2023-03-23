@@ -7,41 +7,82 @@ import {StarRating} from "../../components/StarRating"
 import { Tag } from "../../components/Tag";
 import { List } from "../../components/List";
 import { Container } from "./Styles.js";
-
-
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useAuth } from "../../hooks/auth";
+import avatarPlaceholder from '../../assets/avatar_placeholder.svg'; 
+import { formatterDate } from "../../utils/formatterDate";
+import { api } from "../../services/Api";
 export function Preview () {
+    const { user } = useAuth();
+    const avatarURL =  user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
+    
+    
+    const [note,setNote] = useState({});
+
+    const params = useParams();
+
+    useEffect(() => {
+        async function fetchShowNote(){
+            try {
+                const response = await api.get(`notes/preview/${params.id}`);
+                
+                const [date,time] = formatterDate(response.data.updated_at);
+
+                response.data.updated_at = `${date} às ${time}`;
+                
+                setNote(response.data);
+            
+            } catch (error) {
+                if(error.response) {
+                    alert(error.response.data.message);
+                }else{
+                    alert('Ocorreu um erro ao visualizar nota');
+                }
+            }
+        }
+        fetchShowNote();
+    },[]);
     return (
         <Container>
             <Header/>
-            <main>
-                <TextLink to="/" title="Voltar" icon={BiArrowBack}/>
-                <header>
-                    <div className="title">
-                        <h2>Interestelar</h2>
-                        <StarRating/>
+            {
+                note &&
+                <main>
+                    <TextLink to="/" title="Voltar" icon={BiArrowBack}/>
+                    <header>
+                        <div className="title">
+                            <h2>{note.title}</h2>
+                            <StarRating numStars={note.rating}/>
+                        </div>
+                        <div className="status">
+                            <span>
+                                <img src={avatarURL} alt="Foto do usuário" />
+                                Por {user.name}
+                            </span>
+                            <span>
+                                <AiOutlineClockCircle className="clock" size={18}/> 
+                                {/* 23/05/22 às 08:00 */}
+                                {note.updated_at}
+                            </span>
+                        </div>
+                        <List className="tags">
+                            {
+                                note.tags && note.tags.map((tag, index) => {
+                                    return (
+                                        <li key={String(index)}>
+                                            <Tag title= {tag.name}/>
+                                        </li>             
+                                    )
+                                })
+                            }
+                        </List>
+                    </header>
+                    <div className="desc">
+                            {note.description}
                     </div>
-                    <div className="status">
-                        <span>
-                            <img src="https://github.com/FranciscoYlderlan.png" alt="Foto do usuário" />
-                            Por Francisco Ylderlan
-                        </span>
-                        <span>
-                            <AiOutlineClockCircle className="clock" size={18}/> 
-                            23/05/22 às 08:00
-                        </span>
-                    </div>
-                    <List className="tags">
-                        <li><Tag title="Ficção Científica"/></li>
-                        <li><Tag title="Drama"/></li>
-                        <li><Tag title="Família"/></li>
-                    </List>
-                </header>
-                <div className="desc">
-                    Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um fantasma que tenta se comunicar com ela. Pai e filha descobrem que o "fantasma" é uma inteligência desconhecida que está enviando mensagens codificadas através de radiação gravitacional, deixando coordenadas em binário que os levam até uma instalação secreta da NASA liderada pelo professor John Brand. O cientista revela que um buraco de minhoca foi aberto perto de Saturno e que ele leva a planetas que podem oferecer condições de sobrevivência para a espécie humana. As "missões Lázaro" enviadas anos antes identificaram três planetas potencialmente habitáveis orbitando o buraco negro Gargântua: Miller, Edmunds e Mann – nomeados em homenagem aos astronautas que os pesquisaram. Brand recruta Cooper para pilotar a nave espacial Endurance e recuperar os dados dos astronautas; se um dos planetas se mostrar habitável, a humanidade irá seguir para ele na instalação da NASA, que é na realidade uma enorme estação espacial. A partida de Cooper devasta Murphy.
-                    Além de Cooper, a tripulação da Endurance é formada pela bióloga Amelia, filha de Brand; o cientista Romilly, o físico planetário Doyle, além dos robôs TARS e CASE. Eles entram no buraco de minhoca e se dirigem a Miller, porém descobrem que o planeta possui enorme dilatação gravitacional temporal por estar tão perto de Gargântua: cada hora na superfície equivale a sete anos na Terra. Eles entram em Miller e descobrem que é inóspito já que é coberto por um oceano raso e agitado por ondas enormes. Uma onda atinge a tripulação enquanto Amelia tenta recuperar os dados de Miller, matando Doyle e atrasando a partida. Ao voltarem para a Endurance, Cooper e Amelia descobrem que 23 anos se passaram.
-                </div>
-            </main>
-
+                </main>
+            }
             
 
         </Container>

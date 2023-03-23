@@ -6,7 +6,7 @@ export function Frame({note,...rest}){
     return (
         <Container {...rest}>
             <h3>{note.title}</h3>
-            <StarRating resize={15}/>
+            <StarRating resize={15} numStars={note.rating}/>
             <p>{note.description}</p>
             <List className="tags">
                 {

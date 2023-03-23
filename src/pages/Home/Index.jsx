@@ -61,6 +61,7 @@ export function Home() {
                             <Frame 
                                 key={String(index)} 
                                 note={note}
+                                to={`/preview/${note.id}`}
                             />            
                         );
                     })

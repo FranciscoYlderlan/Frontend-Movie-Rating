@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Container } from "./Styles.js";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
-export function StarRating ({resize=20, ...rest}) {
+export function StarRating ({resize=20,numStars=0, ...rest}) {
     const [rating, setRating] = useState(0);
     const [hover, setHover] = useState(0);
     return (
@@ -17,7 +17,8 @@ export function StarRating ({resize=20, ...rest}) {
               onMouseEnter={() => setHover(index)}
               onMouseLeave={() => setHover(rating)}
             >
-                {index <= (hover || rating)? < AiFillStar size={resize}/> : <AiOutlineStar size={resize}/>}
+                {/* {index <= (hover || rating)? < AiFillStar size={resize}/> : <AiOutlineStar size={resize}/>} */}
+                {index <= numStars? < AiFillStar size={resize}/> : <AiOutlineStar size={resize}/>}
             </button>
           );
         })}

@@ -5,12 +5,21 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { Container, Title } from "./Styles";
 import { useEffect, useState } from "react";
 import { api } from "../../services/Api";
+import { useNavigate } from "react-router-dom";
 
 export function Home() {
     const [notes, setNotes] = useState([]);
     const [search, setSearch] = useState('');
 
-    
+    const navigate = useNavigate();
+
+    function handleClickCreateNewNote(){
+        navigate('/new');
+    }
+
+    function handleClickShowNote(node_id){
+        navigate(`/preview/${node_id}`);
+    }
     
     useEffect(() => {
         async function fetchSearchNotes(){
@@ -45,13 +54,18 @@ export function Home() {
         }
         fetchShowNotes();
     },[]);
+
     return (
         <Container>
             <Header onChange={e => setSearch(e.target.value)}/>
             <Title>
                 <h2>Meus Filmes</h2>
                 
-                <Button to="/new" title={"Adicionar filme"} icon={AiOutlinePlus}/>
+                <Button 
+                    onClick={handleClickCreateNewNote} 
+                    title={"Adicionar filme"} 
+                    icon={AiOutlinePlus}
+                />
                 
             </Title>
             <main>
@@ -61,7 +75,7 @@ export function Home() {
                             <Frame 
                                 key={String(index)} 
                                 note={note}
-                                to={`/preview/${note.id}`}
+                                onClick={() => handleClickShowNote(note.id)}
                             />            
                         );
                     })

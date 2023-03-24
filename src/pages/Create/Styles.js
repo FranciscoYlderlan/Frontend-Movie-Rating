@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { Link } from "react-router-dom";
+import styled from "styled-components";
+
 export const Container = styled.div`
     grid-template-rows: fit-content;
     grid-template-areas: "header"
@@ -23,7 +23,7 @@ export const Container = styled.div`
             .col-2 {
                 display: flex;
                 gap: 40px;
-                a:first-child {
+                button:first-child {
                     background-color: ${({theme}) => theme.COLORS.BLACK};
                     color: ${({theme}) => theme.COLORS.PINK};
                 }

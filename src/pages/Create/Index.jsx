@@ -1,21 +1,34 @@
 import { BiArrowBack} from "react-icons/bi";
+
 import { Header } from "../../components/Header";
 import { TextLink } from "../../components/TextLink";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { TextArea } from "../../components/TextArea";
 import { Markup } from "../../components/Markup";
+
 import { Container, Title, MarkArea } from "./Styles";
+
 import { useState } from "react";
 import { api } from "../../services/Api";
+import { useNavigate } from "react-router-dom";
 
 export function Create() {
+    
     const [title, setTitle] = useState('');
     const [rating, setRating] = useState(0);
     const [description, setDescription] = useState('');
+
     const [tags, setTags] = useState([]);
     const [newTag, setNewTag] = useState("");
+    
     const [noteId, setNoteId] = useState("");
+
+    const navigate = useNavigate();
+
+    function handleComeBack () {
+        navigate(-1);
+    }
 
     function handleSetRating(value) {
         if(value >= 5) {
@@ -37,21 +50,24 @@ export function Create() {
 
     async function handleSubmitNote() {
         try {
-            
-            if(newTag) {
-                alert('Tag informada não foi adicionada.');
-                return;
+
+            if(!title || !description || !rating){
+                return alert('Preencha todos os campos.')
             }
             
-            const response =  await api.post('notes/',{ title, description, rating, tags});
+            if(newTag) return alert('Tag informada não foi adicionada.');
+                
+            const response =  await api.post('notes/', { title, description, rating, tags});
+
             setNoteId(response.data.note_id)
+            
             alert('Nota cadastrada com sucesso!');
             
         } catch (error) {
             if(error.response) {
                 alert(error.response.data.message);
             }else{
-                alert('Ocorreu um erro ao cadastrar nota');
+                alert('Ocorreu um erro ao cadastrar nota.');
             }
         }
     }
@@ -84,7 +100,7 @@ export function Create() {
         <Container>
             <Header/>
             <Title>
-                <TextLink to="/" title="Voltar" icon={BiArrowBack}/>
+                <TextLink onClick={handleComeBack} title="Voltar" icon={BiArrowBack}/>
                 <h2>Novo filme</h2>
             </Title>
             <main>

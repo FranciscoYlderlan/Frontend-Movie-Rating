@@ -5,6 +5,7 @@ import {BiLockAlt} from "react-icons/bi";
 import {AiOutlineMail} from "react-icons/ai";
 import { Container, Image } from "./Styles.js";
 
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../hooks/auth";
 
@@ -12,11 +13,10 @@ import { useAuth } from "../../hooks/auth";
 export function SignIn() {
     const { signIn } = useAuth();
 
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    
+    const navigate = useNavigate();
     
     function handleSignIn() {
         signIn({ email, password });
@@ -45,7 +45,7 @@ export function SignIn() {
                     />
                 </form>
                 <Button title="Entrar" onClick = { handleSignIn }/>
-                <TextLink to="/register" className="link" title="Criar conta" />
+                <TextLink onClick={() => navigate('/register')} className="link" title="Criar conta" />
             </main>       
             <Image/>
         </Container>

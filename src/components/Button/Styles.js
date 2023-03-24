@@ -1,16 +1,19 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom';
-export const Container = styled(Link)`
+
+export const Container = styled.button`
+    
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     
     width: 100%;
-    background-color: ${({theme}) => theme.COLORS.PINK};
+    padding: 16px 0;
+
     border: none;
     border-radius: 8px;
-    padding: 16px 0;
+    
+    background-color: ${({theme}) => theme.COLORS.PINK};
     color: ${({theme}) => theme.COLORS.DARK_GRAY};
 
     
@@ -19,8 +22,14 @@ export const Container = styled(Link)`
     font-size: 16px;
     line-height: 21px;
 
+    transition: all .3s;
+
     &:disabled {
-        cursor:default;
+        cursor: not-allowed;
         filter: brightness(.5);
+    }
+    &:hover {
+        cursor: pointer;
+        filter: brightness(.7);
     }
 `;

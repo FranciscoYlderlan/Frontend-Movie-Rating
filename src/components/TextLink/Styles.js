@@ -1,11 +1,16 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom';
-export const Container = styled(Link)`
+
+
+export const Container = styled.a`
     display: flex;
     gap: 8px;
+    align-items: center;
+    
+    width: fit-content;
+    
     background-color: transparent;
     border: none;
-    align-items: center;
+    
     color: ${({theme}) => theme.COLORS.PINK};
 
     font-style: normal;

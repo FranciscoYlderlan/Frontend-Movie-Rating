@@ -4,17 +4,20 @@ import { Container, Logo, Account } from "./Styles.js";
 import { useAuth } from "../../hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../services/Api";
-import avatarPlaceholder from '../../assets/avatar_placeholder.svg'; 
+import avatarPlaceholder from '../../assets/avatar_placeholder.svg';
+
 
 export function Header({...rest}) {
     
     const navigate = useNavigate();
+    
     const { Logout, user } = useAuth();
     
     const avatarURL =  user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
     
     function handleLogout() {
         Logout();
+        navigate('/');
     }
 
     function handleClickProfile(){    
@@ -23,7 +26,7 @@ export function Header({...rest}) {
 
     return (
         <Container>
-            <Logo to="/">Rocketseat</Logo>
+            <Logo onClick={() => navigate('/') }>Rocketseat</Logo>
             <Input 
                 placeholder="Pesquisar pelo título" 
                 icon={BiSearchAlt} 

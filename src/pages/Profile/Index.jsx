@@ -12,22 +12,30 @@ import avatarPlaceholder from '../../assets/avatar_placeholder.svg';
 
 import { Container, Head, Avatar, Form } from "./Styles";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export function Profile() {
 
     const { user, updateProfile } = useAuth();
 
+    const avatarURL =  user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
+
     const [name, setName] = useState(user.name);
     const [email, setEmail] = useState(user.email);
     const [password, setPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
 
-    const avatarURL =  user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
-    
     const [avatar, setAvatar] = useState(avatarURL);
     const [avatarFile, setAvatarFile] = useState(null);
 
+    
+    const navigate = useNavigate();
+
+    function handleComeBack () {
+        navigate(-1);
+    }
+    
     function handleChangeAvatar(event) {
         const file = event.target.files[0];
         setAvatarFile(file);
@@ -51,7 +59,7 @@ export function Profile() {
     return(
         <Container>
             <Head>
-                <TextLink to="/" title="Voltar" icon={BiArrowBack}/>
+                <TextLink onClick={handleComeBack} title="Voltar" icon={BiArrowBack}/>
             </Head>
             <Avatar>   
                 <img 

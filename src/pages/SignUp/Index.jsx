@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { api } from "../../services/Api";
 
+import { useNavigate } from "react-router-dom";
+
 import {Input} from "../../components/Input";
 import {TextLink} from "../../components/TextLink";
 import {Button} from "../../components/Button";
@@ -15,23 +17,29 @@ export function SignUp() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+
+    function handleComeBack () {
+        navigate(-1);
+    }
     
     function handleSignUp() {
         if (!name || !email || !password) {
-            alert("Preencha todos os campos");
-            return; 
+            return alert("Preencha todos os campos.");
         }
         api.post("/users", {name, email, password})
-        .then(() => alert("Usuário cadastrado com sucesso!"))
+        .then(() => { 
+            alert("Usuário cadastrado com sucesso!");
+            navigate('/');
+        })
         .catch(error => {
             if(error.response){
                 alert(error.response.data.message);
             } else {
-                alert("Ocorreu um erro ao cadastrar usuário");
+                alert("Ocorreu um erro ao cadastrar usuário.");
             }
         });
     }
-
 
     return (
         <Container>
@@ -68,7 +76,7 @@ export function SignUp() {
                     type="button"
                     onClick = {handleSignUp}
                 />
-                <TextLink to="/" className="link" title="Voltar para o login" icon={BiArrowBack}/>
+                <TextLink onClick={handleComeBack} className="link" title="Voltar para o login" icon={BiArrowBack}/>
             </main>
             <Image/>
         </Container>

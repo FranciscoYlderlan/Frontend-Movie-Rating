@@ -1,5 +1,6 @@
-import styled from 'styled-components'
-import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+
 export const Container = styled.div`
     grid-area: header;
     height: fit-content;
@@ -14,12 +15,16 @@ export const Container = styled.div`
     
 `;
 
-export const Logo = styled(Link)`
+export const Logo = styled.div`
     color: ${({theme}) =>  theme.COLORS.PINK};
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
     line-height: 32px;
+
+    &:hover{
+        cursor: pointer;
+    }
 
 `;
 

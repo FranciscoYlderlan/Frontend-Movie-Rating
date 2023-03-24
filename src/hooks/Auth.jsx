@@ -3,7 +3,6 @@ import { api } from '../services/Api';
 
 const AuthContext = createContext({});
 
-
 function AuthProvider({children}) {
 
     const [data, setData] = useState({});
@@ -33,7 +32,6 @@ function AuthProvider({children}) {
         localStorage.removeItem('@rating-movie:user');
         localStorage.removeItem('@rating-movie:token');
         setData({});
-
     }
 
     async function updateProfile({ user, avatarFile }) {
@@ -73,7 +71,12 @@ function AuthProvider({children}) {
     },[])
 
     return (
-        <AuthContext.Provider value={{ signIn, updateProfile, Logout, user: data.user }}>
+        <AuthContext.Provider value={{ 
+            signIn,
+            updateProfile, 
+            Logout, 
+            user: data.user }}
+        >
             {children}
         </AuthContext.Provider>
     );

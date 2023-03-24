@@ -118,7 +118,8 @@ export function Create() {
                             required
                         />
                     </div>
-                    <TextArea 
+                    <TextArea
+                        className='content' 
                         placeholder="Observações"
                         value={description}
                         onChange={e => setDescription(e.target.value)}

@@ -18,12 +18,18 @@ export const Container = styled.div`
     };
     > p {
         margin: 16px 0;
-        
+
         color: ${({theme}) => theme.COLORS.GRAY_200};
+        
         font-style: normal;
         font-weight: 400;
         font-size: 16px;
         line-height: 19px;
+        
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    
     };
     &:hover{
         cursor: pointer;

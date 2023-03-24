@@ -8,6 +8,7 @@ export function Frame({note,...rest}){
             <h3>{note.title}</h3>
             <StarRating resize={15} numStars={note.rating}/>
             <p>{note.description}</p>
+            
             <List className="tags">
                 {
                     note.tags && note.tags.map((tag, index) => {

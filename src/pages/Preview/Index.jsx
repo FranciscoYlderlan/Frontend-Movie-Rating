@@ -60,7 +60,7 @@ export function Preview () {
             <Header/>
             {
                 note &&
-                <main>
+                <main className="content">
                     <TextLink onClick={handleComeBack} title="Voltar" icon={BiArrowBack}/>
                     <header>
                         <div className="title">

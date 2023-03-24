@@ -50,7 +50,6 @@ export function Create() {
 
     async function handleSubmitNote() {
         try {
-
             if(!title || !description || !rating){
                 return alert('Preencha todos os campos.')
             }
@@ -103,7 +102,7 @@ export function Create() {
                 <TextLink onClick={handleComeBack} title="Voltar" icon={BiArrowBack}/>
                 <h2>Novo filme</h2>
             </Title>
-            <main>
+            <main className="content">
                 <form action="">
                     <div className="col-2">
                         <Input 

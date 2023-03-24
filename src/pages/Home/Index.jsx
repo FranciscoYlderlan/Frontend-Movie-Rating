@@ -68,7 +68,7 @@ export function Home() {
                 />
                 
             </Title>
-            <main>
+            <main className="content">
                 {
                     notes && notes.map((note, index) => {
                         return (

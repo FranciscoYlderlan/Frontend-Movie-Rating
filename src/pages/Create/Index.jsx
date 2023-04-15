@@ -41,7 +41,7 @@ export function Create() {
     }
 
     function handleAddTag(){
-        if(!newTag) return alert("Informe o nome da tag para adicioná-la");
+        if(!newTag) return alert("Informe o nome do marcador para adicioná-lo");
         setTags(prevState => [...prevState,newTag]);
         setNewTag('');
     }

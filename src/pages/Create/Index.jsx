@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 export function Create() {
     
     const [title, setTitle] = useState('');
-    const [rating, setRating] = useState(0);
+    const [rating, setRating] = useState('');
     const [description, setDescription] = useState('');
 
     const [tags, setTags] = useState([]);
@@ -114,6 +114,7 @@ export function Create() {
                         <Input
                             type='number' 
                             placeholder="Sua nota (de 0 a 5)"
+                            value={rating}
                             onChange={e => handleSetRating(e.target.value)}
                             required
                         />

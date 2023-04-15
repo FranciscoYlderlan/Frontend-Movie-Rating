@@ -21,9 +21,9 @@ function AuthProvider({children}) {
             
         } catch (error) {
             if(error.response) {
-                alert(error.response.data.message);
+                return alert(error.response.data.message);
             }else {
-                alert('Ocorreu um erro a logar na conta.')
+                return alert('Ocorreu um erro a logar na conta.')
             }
         }
     }
@@ -56,9 +56,9 @@ function AuthProvider({children}) {
         } catch (error) {
 
              if(error.response) {
-                alert(error.response.data.message);
+                return alert(error.response.data.message);
             } else {
-                alert('Ocorreu um erro ao tentar atualizar perfil de usuário.')
+                return alert('Ocorreu um erro ao tentar atualizar perfil de usuário.')
             }
         }
     }

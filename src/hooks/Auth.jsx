@@ -6,6 +6,12 @@ const AuthContext = createContext({});
 function AuthProvider({children}) {
 
     const [data, setData] = useState({});
+
+    function Logout() {
+        localStorage.removeItem('@rating-movie:user');
+        localStorage.removeItem('@rating-movie:token');
+        setData({});
+    }
         
     async function signIn({email, password}) {
         try {
@@ -28,12 +34,6 @@ function AuthProvider({children}) {
         }
     }
     
-    function Logout() {
-        localStorage.removeItem('@rating-movie:user');
-        localStorage.removeItem('@rating-movie:token');
-        setData({});
-    }
-
     async function updateProfile({ user, avatarFile }) {
         try {
 

@@ -3,13 +3,20 @@ import { Header } from "../../components/Header";
 import { Button } from "../../components/Button";
 import { AiOutlinePlus } from "react-icons/ai";
 import { Container, Title } from "./Styles";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { api } from "../../services/Api";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/auth";
 
 export function Home() {
     const [notes, setNotes] = useState([]);
     const [search, setSearch] = useState('');
+
+    const [timesRun, setTimesRun] = useState(0);
+    const counter = useRef(0);
+    const effectCalled = useRef(false);
+
+    const { Logout } = useAuth();
 
     const navigate = useNavigate();
 
@@ -29,31 +36,23 @@ export function Home() {
 
             } catch (error) {
                 if(error.response) {
-                    return alert(error.response.data.message);
+                    alert(error.response.data.message);
                 }else{
-                    return alert('Ocorreu um erro ao pesquisar notas');
+                    alert('Ocorreu um erro ao pesquisar notas');
                 }
+                Logout();
+                return;
             }   
         }
+        
+        if (effectCalled.current) return;
         fetchSearchNotes();
-    },[search])
+        effectCalled.current = true;
 
-    useEffect(() => {
-        async function fetchShowNotes(){
-            try {
-                const response = await api.get('notes/?search');
-                setNotes(response.data);
-            
-            } catch (error) {
-                if(error.response) {
-                    return alert(error.response.data.message);
-                }else{
-                    return alert('Ocorreu um erro ao pesquisar notas');
-                }
-            }
-        }
-        fetchShowNotes();
-    },[]);
+
+    },[search]);
+
+
 
     return (
         <Container>

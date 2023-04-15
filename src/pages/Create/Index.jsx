@@ -41,7 +41,13 @@ export function Create() {
     }
 
     function handleAddTag(){
-        if(!newTag) return alert("Informe o nome do marcador para adicioná-lo");
+
+        if(!newTag) return alert("Informe o nome do marcador para adicioná-lo.");
+
+        if(tags.filter(tag => tag.toLowerCase() === newTag.toLowerCase()).length > 0){
+            return alert('Tag já adicionada.');
+        }
+
         setTags(prevState => [...prevState,newTag]);
         setNewTag('');
     }
@@ -62,7 +68,10 @@ export function Create() {
 
             setNoteId(response.data.note_id)
             
-            return alert('Nota cadastrada com sucesso!');
+            alert('Nota cadastrada com sucesso!');
+
+            handleComeBack();
+            return;
             
         } catch (error) {
             if(error.response) {

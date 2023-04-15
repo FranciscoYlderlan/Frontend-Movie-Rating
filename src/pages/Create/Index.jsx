@@ -12,6 +12,7 @@ import { Container, Title, MarkArea } from "./Styles";
 import { useState } from "react";
 import { api } from "../../services/Api";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/auth";
 
 export function Create() {
     
@@ -23,6 +24,8 @@ export function Create() {
     const [newTag, setNewTag] = useState("");
     
     const [noteId, setNoteId] = useState("");
+
+    const { isTokenAuthenticated } = useAuth();
 
     const navigate = useNavigate();
 
@@ -75,10 +78,13 @@ export function Create() {
             
         } catch (error) {
             if(error.response) {
-                return alert(error.response.data.message);
+                alert(error.response.data.message);
+                isTokenAuthenticated(error.response.status);
+                handleComeBack();
             }else{
-                return alert('Ocorreu um erro ao cadastrar nota.');
+                alert('Ocorreu um erro ao cadastrar nota.');
             }
+            return;
         }
     }
 
@@ -100,12 +106,16 @@ export function Create() {
             
         } catch (error) {
             if(error.response) {
-                return alert(error.response.data.message);
+                alert(error.response.data.message);
+                isTokenAuthenticated(error.response.status);
+                return;
+                
             }else{
                 return alert('Ocorreu um erro ao deletar nota');
             }
         }
     }
+    
     return (
         <Container>
             <Header/>

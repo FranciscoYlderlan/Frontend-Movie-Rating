@@ -3,7 +3,7 @@ import { Header } from "../../components/Header";
 import { Button } from "../../components/Button";
 import { AiOutlinePlus } from "react-icons/ai";
 import { Container, Title } from "./Styles";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState} from "react";
 import { api } from "../../services/Api";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
@@ -12,11 +12,7 @@ export function Home() {
     const [notes, setNotes] = useState([]);
     const [search, setSearch] = useState('');
 
-    const [timesRun, setTimesRun] = useState(0);
-    const counter = useRef(0);
-    const effectCalled = useRef(false);
-
-    const { Logout } = useAuth();
+    const { isTokenAuthenticated } = useAuth();
 
     const navigate = useNavigate();
 
@@ -37,22 +33,18 @@ export function Home() {
             } catch (error) {
                 if(error.response) {
                     alert(error.response.data.message);
+                    isTokenAuthenticated(error.response.status);
                 }else{
                     alert('Ocorreu um erro ao pesquisar notas');
                 }
-                Logout();
                 return;
             }   
         }
         
-        if (effectCalled.current) return;
         fetchSearchNotes();
-        effectCalled.current = true;
-
+        
 
     },[search]);
-
-
 
     return (
         <Container>

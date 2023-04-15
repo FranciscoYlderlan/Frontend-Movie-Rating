@@ -12,6 +12,12 @@ function AuthProvider({children}) {
         localStorage.removeItem('@rating-movie:token');
         setData({});
     }
+
+    function isTokenAuthenticated(statusCode){
+        const isUnauthorized = statusCode === 401;
+        
+        if(isUnauthorized) Logout();
+    }
         
     async function signIn({email, password}) {
         try {
@@ -56,10 +62,12 @@ function AuthProvider({children}) {
         } catch (error) {
 
              if(error.response) {
-                return alert(error.response.data.message);
+                alert(error.response.data.message);
+                isTokenAuthenticated(error.response.status);
             } else {
-                return alert('Ocorreu um erro ao tentar atualizar perfil de usuário.')
+                alert('Ocorreu um erro ao tentar atualizar perfil de usuário.');
             }
+            return;
         }
     }
 
@@ -74,7 +82,8 @@ function AuthProvider({children}) {
         <AuthContext.Provider value={{ 
             signIn,
             updateProfile, 
-            Logout, 
+            Logout,
+            isTokenAuthenticated, 
             user: data.user }}
         >
             {children}

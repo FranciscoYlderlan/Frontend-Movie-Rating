@@ -29,8 +29,9 @@ export function SignUp() {
         }
         api.post("/users", {name, email, password})
         .then(() => { 
-            return alert("Usuário cadastrado com sucesso!");
+            alert("Usuário cadastrado com sucesso!");
             navigate('/');
+            return; 
         })
         .catch(error => {
             if(error.response){

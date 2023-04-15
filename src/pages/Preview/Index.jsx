@@ -45,10 +45,13 @@ export function Preview () {
             
             } catch (error) {
                 if(error.response) {
-                    return alert(error.response.data.message);
+                    alert(error.response.data.message);
+                    isTokenAuthenticated(error.response.status);
+                    handleComeBack();
                 }else{
-                    return alert('Ocorreu um erro ao visualizar nota');
+                    alert('Ocorreu um erro ao visualizar nota');
                 }
+                return;
             }
         }
         fetchShowNote();

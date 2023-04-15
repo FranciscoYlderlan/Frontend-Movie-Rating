@@ -51,7 +51,7 @@ function AuthProvider({children}) {
 
             setData({ user, token: data.token });
 
-            alert("Perfil de usuário atualizado com sucesso!")
+            return alert("Perfil de usuário atualizado com sucesso!")
               
         } catch (error) {
 

@@ -29,9 +29,9 @@ export function Home() {
 
             } catch (error) {
                 if(error.response) {
-                    alert(error.response.data.message);
+                    return alert(error.response.data.message);
                 }else{
-                    alert('Ocorreu um erro ao pesquisar notas');
+                    return alert('Ocorreu um erro ao pesquisar notas');
                 }
             }   
         }
@@ -46,9 +46,9 @@ export function Home() {
             
             } catch (error) {
                 if(error.response) {
-                    alert(error.response.data.message);
+                    return alert(error.response.data.message);
                 }else{
-                    alert('Ocorreu um erro ao pesquisar notas');
+                    return alert('Ocorreu um erro ao pesquisar notas');
                 }
             }
         }

@@ -41,6 +41,7 @@ export function Create() {
     }
 
     function handleAddTag(){
+        if(!newTag) return alert("Informe o nome da tag para adicioná-la");
         setTags(prevState => [...prevState,newTag]);
         setNewTag('');
     }
@@ -48,7 +49,8 @@ export function Create() {
         setTags(prevState => prevState.filter(tag => tag != value));
     }
 
-    async function handleSubmitNote() {
+    async function handleSubmitNote(event) {
+        event.preventDefault();
         try {
             if(!title || !description || !rating){
                 return alert('Preencha todos os campos.')
@@ -60,13 +62,13 @@ export function Create() {
 
             setNoteId(response.data.note_id)
             
-            alert('Nota cadastrada com sucesso!');
+            return alert('Nota cadastrada com sucesso!');
             
         } catch (error) {
             if(error.response) {
-                alert(error.response.data.message);
+                return alert(error.response.data.message);
             }else{
-                alert('Ocorreu um erro ao cadastrar nota.');
+                return alert('Ocorreu um erro ao cadastrar nota.');
             }
         }
     }
@@ -81,17 +83,17 @@ export function Create() {
                     setDescription('');
                     setTags([]);
                     setNoteId('');
-                    alert('Nota excluída com sucesso!');
+                    return alert('Nota excluída com sucesso!');
                 }
             }else{
-                alert('Nota ainda não foi cadastrada');
+                return alert('Nota ainda não foi cadastrada');
             }
             
         } catch (error) {
             if(error.response) {
-                alert(error.response.data.message);
+                return alert(error.response.data.message);
             }else{
-                alert('Ocorreu um erro ao deletar nota');
+                return alert('Ocorreu um erro ao deletar nota');
             }
         }
     }
@@ -149,7 +151,7 @@ export function Create() {
                     </MarkArea>
                     <div className="col-2">
                         <Button onClick={handleDeleteNote} title="Excluir filme"/>
-                        <Button onClick={handleSubmitNote} title="Salvar alterações"/>
+                        <Button onClick={e => handleSubmitNote(e)} title="Salvar alterações"/>
                     </div>
                 </form>
             </main>

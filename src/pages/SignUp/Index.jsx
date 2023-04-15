@@ -29,14 +29,14 @@ export function SignUp() {
         }
         api.post("/users", {name, email, password})
         .then(() => { 
-            alert("Usuário cadastrado com sucesso!");
+            return alert("Usuário cadastrado com sucesso!");
             navigate('/');
         })
         .catch(error => {
             if(error.response){
-                alert(error.response.data.message);
+                return alert(error.response.data.message);
             } else {
-                alert("Ocorreu um erro ao cadastrar usuário.");
+                return alert("Ocorreu um erro ao cadastrar usuário.");
             }
         });
     }

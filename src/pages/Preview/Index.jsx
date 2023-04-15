@@ -45,9 +45,9 @@ export function Preview () {
             
             } catch (error) {
                 if(error.response) {
-                    alert(error.response.data.message);
+                    return alert(error.response.data.message);
                 }else{
-                    alert('Ocorreu um erro ao visualizar nota');
+                    return alert('Ocorreu um erro ao visualizar nota');
                 }
             }
         }

@@ -46,7 +46,7 @@ export function Preview () {
             } catch (error) {
                 if(error.response) {
                     alert(error.response.data.message);
-                    isTokenAuthenticated(error.response.status);
+                    if(isTokenAuthenticated(error.response.status)) return;
                     handleComeBack();
                 }else{
                     alert('Ocorreu um erro ao visualizar nota');

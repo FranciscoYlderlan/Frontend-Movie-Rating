@@ -28,7 +28,7 @@ export function Header({...rest}) {
         <Container>
             <Logo onClick={() => navigate('/') }>Rocketseat</Logo>
             <Input 
-                placeholder="Pesquisar pelo título" 
+                placeholder="Pesquisar por Nota" 
                 icon={BiSearchAlt} 
                 {...rest}
             />

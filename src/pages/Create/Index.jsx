@@ -47,6 +47,10 @@ export function Create() {
         
     }
 
+    function handleNewTag(e) {
+        const { value } = e.target;
+        setNewTag(value.trim())
+    }
     function handleAddTag(){
 
         if(!newTag) return alert("Informe o nome do marcador para adicioná-lo.");
@@ -140,7 +144,7 @@ export function Create() {
                             type='number' 
                             placeholder="Sua nota (de 0 a 5)"
                             value={rating}
-                            onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()}
+                            onKeyDown={(e) => ["e", "E", "+", "-"].includes(e.key) && e.preventDefault()}
                             onChange={e => handleSetRating(e)}
                             required
                         />
@@ -168,7 +172,7 @@ export function Create() {
                         <Markup 
                             isNew 
                             placeholder="Novo marcador"
-                            onChange={e => setNewTag(e.target.value)}
+                            onChange={e => handleNewTag(e)}
                             value={newTag}
                             onClick={handleAddTag}
                         />

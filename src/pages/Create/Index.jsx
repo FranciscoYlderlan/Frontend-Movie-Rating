@@ -75,6 +75,8 @@ export function Create() {
             
             if(newTag) return alert('Tag informada não foi adicionada.');
                 
+            if(tags.length == 0) return alert('Informe pelo menos uma tag.');
+            
             const response =  await api.post('notes/', { title, description, rating, tags});
 
             setNoteId(response.data.note_id)

@@ -33,7 +33,10 @@ export function Create() {
         navigate(-1);
     }
 
-    function handleSetRating(value) {
+    function handleSetRating(e) {
+        
+        const { value } = e.target;
+    
         if(value >= 5) {
             setRating(5); 
         }else if(value < 0) {
@@ -41,6 +44,7 @@ export function Create() {
         }else{
             setRating(value);
         }
+        
     }
 
     function handleAddTag(){
@@ -136,7 +140,8 @@ export function Create() {
                             type='number' 
                             placeholder="Sua nota (de 0 a 5)"
                             value={rating}
-                            onChange={e => handleSetRating(e.target.value)}
+                            onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()}
+                            onChange={e => handleSetRating(e)}
                             required
                         />
                     </div>

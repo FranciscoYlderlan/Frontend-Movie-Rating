@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle  from './styles/Global.js';
 import theme from './styles/Theme.js';
-import { Routes } from './routes';
+import { Routes } from './routes/index.jsx';
 import { AuthProvider } from './hooks/auth.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(

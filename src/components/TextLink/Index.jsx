@@ -1,4 +1,4 @@
-import { Container } from "./Styles.js";
+import { Container } from "./styles.js";
 
 export function TextLink ({title, icon: Icon, ...rest}) {
     return (

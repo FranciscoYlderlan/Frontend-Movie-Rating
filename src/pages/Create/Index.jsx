@@ -7,10 +7,10 @@ import { Input } from "../../components/Input";
 import { TextArea } from "../../components/TextArea";
 import { Markup } from "../../components/Markup";
 
-import { Container, Title, MarkArea } from "./Styles";
+import { Container, Title, MarkArea } from "./styles";
 
 import { useState } from "react";
-import { api } from "../../services/Api";
+import { api } from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
 

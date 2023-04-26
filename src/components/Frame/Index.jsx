@@ -1,7 +1,7 @@
 import { StarRating } from "../StarRating";
 import { List } from "../List";
 import { Tag } from "../Tag";
-import { Container } from "./Styles";
+import { Container } from "./styles";
 export function Frame({note,...rest}){
     return (
         <Container {...rest}>

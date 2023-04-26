@@ -3,11 +3,11 @@ import {TextLink} from "../../components/TextLink";
 import {Button} from "../../components/Button";
 import {BiLockAlt} from "react-icons/bi";
 import {AiOutlineMail} from "react-icons/ai";
-import { Container, Image } from "./Styles.js";
+import { Container, Image } from "./styles.js";
 
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useAuth } from "../../hooks/auth";
+import { useAuth } from "../../hooks/auth.jsx";
 
 
 export function SignIn() {

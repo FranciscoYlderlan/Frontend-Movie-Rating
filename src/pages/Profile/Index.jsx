@@ -5,12 +5,12 @@ import { BiArrowBack, BiLockAlt } from "react-icons/bi";
 import { AiOutlineMail } from "react-icons/ai";
 import { FiCamera } from "react-icons/fi";
 import { RxPerson } from "react-icons/rx";
-import { api } from "../../services/Api";
+import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
 
 import avatarPlaceholder from '../../assets/avatar_placeholder.svg'; 
 
-import { Container, Head, Avatar, Form } from "./Styles";
+import { Container, Head, Avatar, Form } from "./styles";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 

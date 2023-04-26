@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { api } from "../../services/Api";
+import { api } from "../../services/api";
 
 import { useNavigate } from "react-router-dom";
 
 import {Input} from "../../components/Input";
 import {TextLink} from "../../components/TextLink";
 import {Button} from "../../components/Button";
-import { Container, Image } from "./Styles.js";
+import { Container, Image } from "./styles.js";
 
 import {BiLockAlt, BiArrowBack} from "react-icons/bi";
 import {AiOutlineMail} from "react-icons/ai";

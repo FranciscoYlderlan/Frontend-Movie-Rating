@@ -2,9 +2,9 @@ import { Frame } from "../../components/Frame";
 import { Header } from "../../components/Header";
 import { Button } from "../../components/Button";
 import { AiOutlinePlus } from "react-icons/ai";
-import { Container, Title } from "./Styles";
+import { Container, Title } from "./styles";
 import { useEffect, useState} from "react";
-import { api } from "../../services/Api";
+import { api } from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
 

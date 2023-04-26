@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container } from "./Styles.js";
+import { Container } from "./styles.js";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 export function StarRating ({resize=20,numStars=0, ...rest}) {

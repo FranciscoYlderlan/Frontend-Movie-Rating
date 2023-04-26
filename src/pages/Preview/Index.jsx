@@ -6,12 +6,12 @@ import { TextLink } from "../../components/TextLink";
 import {StarRating} from "../../components/StarRating"
 import { Tag } from "../../components/Tag";
 import { List } from "../../components/List";
-import { Container } from "./Styles.js";
+import { Container } from "./styles.js";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
 
-import { api } from "../../services/Api";
+import { api } from "../../services/api";
 
 import avatarPlaceholder from '../../assets/avatar_placeholder.svg'; 
 

@@ -1,4 +1,4 @@
-import { Container } from "./Styles";
+import { Container } from "./styles";
 import { FiPlus, FiX } from "react-icons/fi";
 export function Markup({isNew, value='' ,onClick, ...rest}) {
     

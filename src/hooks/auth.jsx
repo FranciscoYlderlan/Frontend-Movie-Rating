@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { api } from '../services/Api';
+import { api } from '../services/api.js';
 
 const AuthContext = createContext({});
 
@@ -16,7 +16,11 @@ function AuthProvider({children}) {
     function isTokenAuthenticated(statusCode){
         const isUnauthorized = statusCode === 401;
         
-        if(isUnauthorized) Logout();
+        if(isUnauthorized) {
+            Logout();
+            return false;
+        }
+        return true
     }
         
     async function signIn({email, password}) {

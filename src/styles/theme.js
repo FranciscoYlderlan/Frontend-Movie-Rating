@@ -11,6 +11,7 @@ export default {
       PINK: "#FF859B",
       PINK_ALFA:"#ff859b0d", // SIMILAR AO BACKGROUD_900
       DARK_GRAY: "#312E38",
+      SHADOW: "#00000080",
 
       GRAY: "#CAC4CF",
       GRAY_100: "#948F99",

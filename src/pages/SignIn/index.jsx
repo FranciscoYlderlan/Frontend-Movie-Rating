@@ -4,7 +4,7 @@ import {Button} from "../../components/Button";
 import {BiLockAlt} from "react-icons/bi";
 import {AiOutlineMail} from "react-icons/ai";
 import { Container, Image } from "./styles.js";
-
+import { Loading } from "../../components/Loading";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../hooks/auth.jsx";
@@ -24,6 +24,7 @@ export function SignIn() {
 
     return (
         <Container>
+            <Loading/>
             <main>
                 <h1>RocketMovies</h1>
                 <p>Aplicação para acompanhar tudo que assistir.</p>

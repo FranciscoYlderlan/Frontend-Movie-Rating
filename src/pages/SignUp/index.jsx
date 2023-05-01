@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { api } from "../../services/api";
 
+import { Loading } from "../../components/Loading";
+
 import { useNavigate } from "react-router-dom";
 
 import {Input} from "../../components/Input";
@@ -17,6 +19,9 @@ export function SignUp() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const [isLoading, setIsLoading] = useState(false);
+
     const navigate = useNavigate();
 
     function handleComeBack () {
@@ -27,6 +32,7 @@ export function SignUp() {
         if (!name || !email || !password) {
             return alert("Preencha todos os campos.");
         }
+        setIsLoading(true);
         api.post("/users", {name, email, password})
         .then(() => { 
             alert("Usuário cadastrado com sucesso!");
@@ -39,11 +45,12 @@ export function SignUp() {
             } else {
                 return alert("Ocorreu um erro ao cadastrar usuário.");
             }
-        });
+        }).finally(() =>  setIsLoading(false));
     }
 
     return (
         <Container>
+            {isLoading && <Loading />}
             <main>
                 <h1>RocketMovies</h1>
                 <p>Aplicação para acompanhar tudo que assistir.</p>

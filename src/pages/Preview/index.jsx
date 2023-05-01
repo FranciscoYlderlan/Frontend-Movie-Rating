@@ -6,10 +6,12 @@ import { TextLink } from "../../components/TextLink";
 import {StarRating} from "../../components/StarRating"
 import { Tag } from "../../components/Tag";
 import { List } from "../../components/List";
+import { Loading } from "../../components/Loading";
+
 import { Container } from "./styles.js";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks/auth";
+import { useAuth } from "../../hooks/auth.jsx";
 
 import { api } from "../../services/api";
 
@@ -22,6 +24,8 @@ export function Preview () {
     const { user } = useAuth();
     const avatarURL =  user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
     
+    const [isLoading, setIsLoading] = useState(false);
+
     const navigate = useNavigate();
 
     function handleComeBack () {
@@ -35,6 +39,7 @@ export function Preview () {
     useEffect(() => {
         async function fetchShowNote(){
             try {
+                setIsLoading(true);
                 const response = await api.get(`notes/preview/${params.id}`);
                 
                 const [date,time] = formatterDate(response.data.updated_at);
@@ -49,8 +54,11 @@ export function Preview () {
                 }else{
                     alert('Ocorreu um erro ao visualizar nota');
                 }
-                return;
+
+            }finally {
+                setIsLoading(false)
             }
+            return;
         }
         fetchShowNote();
     },[]);
@@ -58,6 +66,7 @@ export function Preview () {
 
     return (
         <Container>
+            {isLoading && <Loading/>}
             <Header/>
             {
                 note &&

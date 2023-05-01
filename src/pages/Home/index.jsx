@@ -1,3 +1,5 @@
+
+import { Loading } from "../../components/Loading";
 import { Frame } from "../../components/Frame";
 import { Header } from "../../components/Header";
 import { Button } from "../../components/Button";
@@ -6,7 +8,7 @@ import { Container, Title } from "./styles";
 import { useEffect, useState} from "react";
 import { api } from "../../services/api";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks/auth";
+import { useAuth } from "../../hooks/auth.jsx";
 
 export function Home() {
     const [notes, setNotes] = useState([]);
@@ -38,7 +40,7 @@ export function Home() {
                     alert('Ocorreu um erro ao pesquisar notas');
                 }
                 return;
-            }   
+            }
         }
         
         fetchSearchNotes();
@@ -48,6 +50,7 @@ export function Home() {
 
     return (
         <Container>
+  
             <Header onChange={e => setSearch(e.target.value)}/>
             <Title>
                 <h2>Meus Filmes</h2>

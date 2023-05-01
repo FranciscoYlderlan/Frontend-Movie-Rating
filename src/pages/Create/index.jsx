@@ -7,12 +7,14 @@ import { Input } from "../../components/Input";
 import { TextArea } from "../../components/TextArea";
 import { Markup } from "../../components/Markup";
 
+import { Loading } from "../../components/Loading";
+
 import { Container, Title, MarkArea } from "./styles";
 
 import { useState } from "react";
 import { api } from "../../services/api";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks/auth";
+import { useAuth } from "../../hooks/auth.jsx";
 
 export function Create() {
     
@@ -24,6 +26,8 @@ export function Create() {
     const [newTag, setNewTag] = useState("");
     
     const [noteId, setNoteId] = useState("");
+
+    const [isLoading, setIsLoading] = useState(false);
 
     const { isTokenAuthenticated } = useAuth();
 
@@ -77,6 +81,8 @@ export function Create() {
                 
             if(tags.length == 0) return alert('Informe pelo menos uma tag.');
             
+            setIsLoading(true);
+
             const response =  await api.post('notes/', { title, description, rating, tags});
 
             setNoteId(response.data.note_id)
@@ -95,10 +101,13 @@ export function Create() {
                 alert('Ocorreu um erro ao cadastrar nota.');
             }
             return;
+        } finally{
+            setIsLoading(false);
         }
     }
 
-    async function handleDeleteNote() {
+    async function handleDeleteNote(event) {
+        event.preventDefault();
         try {
             if(noteId) {
                 if(window.confirm('Tem certeza que deseja excluir nota já cadastrada?')){
@@ -128,6 +137,7 @@ export function Create() {
     
     return (
         <Container>
+            {isLoading && <Loading/>}
             <Header/>
             <Title>
                 <TextLink onClick={handleComeBack} title="Voltar" icon={BiArrowBack}/>
@@ -180,7 +190,7 @@ export function Create() {
                         />
                     </MarkArea>
                     <div className="col-2">
-                        <Button onClick={handleDeleteNote} title="Excluir filme"/>
+                        <Button onClick={e => handleDeleteNote(e)} title="Excluir filme"/>
                         <Button onClick={e => handleSubmitNote(e)} title="Salvar alterações"/>
                     </div>
                 </form>

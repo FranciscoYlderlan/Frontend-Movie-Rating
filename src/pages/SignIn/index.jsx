@@ -16,15 +16,18 @@ export function SignIn() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const [isLoading, setIsLoading] = useState(false);
+
     const navigate = useNavigate();
     
     function handleSignIn() {
-        signIn({ email, password });
+        setIsLoading(true);
+        signIn({ email, password }).then(() => setIsLoading(false));
     }
 
     return (
         <Container>
-            <Loading/>
+            {isLoading && <Loading/>}
             <main>
                 <h1>RocketMovies</h1>
                 <p>Aplicação para acompanhar tudo que assistir.</p>

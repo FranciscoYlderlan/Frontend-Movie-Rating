@@ -5,8 +5,7 @@ export function Loading() {
         <Container>
             <Background>
                 <Title>
-                    Loading
-                    <Dots/>
+                    Carregando<Dots/>
                 </Title>                
             </Background>
 

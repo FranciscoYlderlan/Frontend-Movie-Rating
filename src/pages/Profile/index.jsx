@@ -1,12 +1,16 @@
 import { TextLink } from "../../components/TextLink";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
+import { Loading } from "../../components/Loading";
+
 import { BiArrowBack, BiLockAlt } from "react-icons/bi";
 import { AiOutlineMail } from "react-icons/ai";
 import { FiCamera } from "react-icons/fi";
 import { RxPerson } from "react-icons/rx";
+
 import { api } from "../../services/api";
-import { useAuth } from "../../hooks/auth";
+
+import { useAuth } from "../../hooks/auth.jsx";
 
 import avatarPlaceholder from '../../assets/avatar_placeholder.svg'; 
 
@@ -25,6 +29,8 @@ export function Profile() {
     const [email, setEmail] = useState(user.email);
     const [password, setPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
+
+    const [isLoading, setIsLoading] = useState(false);
 
     const [avatar, setAvatar] = useState(avatarURL);
     const [avatarFile, setAvatarFile] = useState(null);
@@ -52,12 +58,14 @@ export function Profile() {
             password,
             newPassword,
         });
-        
-        updateProfile({ user: userUpdated, avatarFile });
+        setIsLoading(true);
+        updateProfile({ user: userUpdated, avatarFile })
+        .then(() => setIsLoading(false));
     }
 
     return(
         <Container>
+            {isLoading && <Loading/>}
             <Head>
                 <TextLink onClick={handleComeBack} title="Voltar" icon={BiArrowBack}/>
             </Head>
